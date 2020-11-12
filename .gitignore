@@ -2,6 +2,7 @@
 # Unity folders and files
 ###
 /ProjetoLuminecencia/[Aa]ssets/AssetStoreTools*
+/ProjetoLuminecencia/[Aa]ssets/ExampleAssets
 /ProjetoLuminecencia/[Bb]uild/
 /ProjetoLuminecencia/[Ll]ibrary/
 /ProjetoLuminecencia/[Ll]ocal[Cc]ache/
