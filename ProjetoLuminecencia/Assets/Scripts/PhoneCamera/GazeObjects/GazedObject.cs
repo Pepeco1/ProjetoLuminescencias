@@ -41,7 +41,7 @@ public class GazedObject : MonoBehaviour
 
             Vector3 dir = (targetPoint.position - gazingCamera.transform.position).normalized;
             Ray ray = new Ray(gazingCamera.transform.position, dir);
-            
+            Debug.DrawRay(gazingCamera.transform.position, dir * seeingDistance, Color.red);
             RaycastHit hitInfo;
             if(Physics.Raycast(ray, out hitInfo, seeingDistance))
             {
