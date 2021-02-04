@@ -13,28 +13,14 @@ public class GazedObject : MonoBehaviour
     [SerializeField] private Transform[] targetPointsArray;
     [SerializeField] private Camera gazingCamera;
 
-    private void Update()
-    {
-
-        Debug.Log((float) pointsSeenNow / targetPointsArray.Length);
-
-        if (IsObjectOnCamera())
-        {
-            Debug.Log("Yes");
-        }
-        else
-        {
-            Debug.Log("NO");
-        }
-
-
-    }
 
     #region private functions
 
-    private bool IsObjectOnCamera()
+    public bool IsObjectOnCamera(Camera gazingCamera)
     {
-
+        
+        this.gazingCamera = gazingCamera;
+        
         if (AreAllPointsInFOV())
         {
             if (PointsSeenAreEnough())
@@ -51,14 +37,15 @@ public class GazedObject : MonoBehaviour
     private bool AreAllPointsInFOV()
     {
 
-        bool allInFOV = true;
         foreach(var point in targetPointsArray)
         {
+
             if (IsPointOnFOV(point) == false)
-                allInFOV = false;
+                return false;
+
         }
 
-        return allInFOV;
+        return true;
     }
 
     private bool IsPointOnFOV(Transform point)
