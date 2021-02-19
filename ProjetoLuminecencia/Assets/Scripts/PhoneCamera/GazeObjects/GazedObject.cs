@@ -3,20 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GazedObject : MonoBehaviour
-{
+{ 
+
+    private int pointsSeenNow = 0;
+    private Camera gazingCamera;
+
+    [Header("Serialized fields")]
 
     [SerializeField] private float percentageOfScreenApearenceAcception = 0.6f;
     [SerializeField] private float seeingDistance = 30f;
-
-    private int pointsSeenNow = 0;
-
     [SerializeField] private Transform[] targetPointsArray;
-    [SerializeField] private Camera gazingCamera;
+
 
 
     #region private functions
 
-    public bool IsObjectOnCamera(Camera gazingCamera)
+    public bool IsObjectInCamera(Camera gazingCamera)
     {
         
         this.gazingCamera = gazingCamera;

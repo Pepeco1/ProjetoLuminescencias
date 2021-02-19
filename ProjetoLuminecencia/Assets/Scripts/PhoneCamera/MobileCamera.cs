@@ -1,32 +1,37 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class MobileCamera : MonoBehaviour
 {
     private Camera myCamera = null;
-    private List<GazedObject> gazedObjects = null;
+    private GazeManager gazeManager = null;
     private List<GazedObject> objectsInPhoto = null;
 
+
+    #region Unity Functions
     private void Awake()
     {
-        gazedObjects = FindObjectsOfType<GazedObject>().ToList();
+        gazeManager = GazeManager.Instance;
         myCamera = GetComponent<Camera>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
+        {
             TakePicture();
+            Debug.Log("Tirou foto");
+            Debug.Log(objectsInPhoto.Count);
+        }
     }
+
+    #endregion
+
+    #region public functions
 
     public void TakePicture()
     {
@@ -37,18 +42,27 @@ public class MobileCamera : MonoBehaviour
 
         LookForObjectsInPhoto();
 
+        TryCompleteObjectives():
+
     }
+
+
+    #endregion
 
     #region private functions
-    
+
     private void LookForObjectsInPhoto()
     {
-        gazedObjects.ForEach((gazedObject) => AddGazedToPhotoList(gazedObject));
+        objectsInPhoto = gazeManager.GetObjectsOnCamera(myCamera);
     }
 
-    private void AddGazedToPhotoList(GazedObject gazed)
+    private void TryCompleteObjectives()
     {
-        objectsInPhoto.Add(gazed);
+        foreach(var objInPhoto in objectsInPhoto)
+        {
+            //Do other stuff?
+            ObjectiveManager.Instance.TryCompleteObjective(objInPhoto);
+        }
     }
 
     #endregion

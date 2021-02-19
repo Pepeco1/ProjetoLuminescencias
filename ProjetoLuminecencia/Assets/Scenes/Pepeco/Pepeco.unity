@@ -4145,6 +4145,7 @@ GameObject:
   - component: {fileID: 1924728164}
   - component: {fileID: 1924728163}
   - component: {fileID: 1924728162}
+  - component: {fileID: 1924728161}
   m_Layer: 0
   m_Name: PhoneCamera
   m_TagString: Untagged
@@ -4152,6 +4153,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1924728161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924728160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d509d05cb6a3e7040a8c32794617a318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1924728162
 MonoBehaviour:
   m_ObjectHideFlags: 0
