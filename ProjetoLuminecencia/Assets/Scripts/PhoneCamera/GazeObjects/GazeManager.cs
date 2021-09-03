@@ -3,38 +3,42 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-
-public class GazeManager : Singleton<GazeManager>
+namespace Project.Main
 {
 
-    private List<GazedObject> gazedObjects = null;
-
-
-    private void Awake()
-    {
-        gazedObjects = FindObjectsOfType<GazedObject>().ToList();
-    }
-
-
-    public List<GazedObject> GetObjectsOnCamera(Camera gazingCamera)
+    public class GazeManager : Singleton<GazeManager>
     {
 
-        var objectsInCamera = new List<GazedObject>();
+        private List<GazedObject> gazedObjects = null;
 
-        foreach (var gazedObject in gazedObjects)
+
+        private void Awake()
+        {
+            gazedObjects = FindObjectsOfType<GazedObject>().ToList();
+        }
+
+
+        public List<GazedObject> GetObjectsOnCamera(Camera gazingCamera)
         {
 
-            if (gazedObject.IsObjectInCamera(gazingCamera))
+            var objectsInCamera = new List<GazedObject>();
+
+            foreach (var gazedObject in gazedObjects)
             {
-                objectsInCamera.Add(gazedObject);
+
+                if (gazedObject.IsObjectInCamera(gazingCamera))
+                {
+                    objectsInCamera.Add(gazedObject);
+                }
+
             }
+
+            return objectsInCamera;
 
         }
 
-        return objectsInCamera;
 
     }
-
 
 }
 
